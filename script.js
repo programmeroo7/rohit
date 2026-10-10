@@ -1,3 +1,21 @@
+// Always open at the top: don't restore the old scroll position on refresh, and
+// don't let a leftover #section in the URL jump the page to that section.
+(() => {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo({ top: 0, behavior: "instant" });
+
+  // In-page links scroll to their section without writing #section into the URL.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const target = link.getAttribute("href").length > 1 && document.querySelector(link.getAttribute("href"));
+    if (!target || target.closest("svg")) return;
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+})();
+
 (() => {
   // Temporarily off; set to true to restore the scroll-scrubbing background.
   const BG_ANIMATION_ENABLED = true;
