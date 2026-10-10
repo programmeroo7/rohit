@@ -627,6 +627,12 @@ a {
   margin-left: calc(-14 * var(--u));
 }
 
+.avatars .avatar-lead {
+  position: relative;
+  z-index: 1;
+  border-color: var(--accent);
+}
+
 .avatar-more {
   display: flex;
   align-items: center;
@@ -647,41 +653,6 @@ a {
   color: var(--accent-ink);
   font-size: var(--fs-small);
   font-weight: 600;
-}
-
-.chart {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: calc(28 * var(--u));
-  margin-bottom: calc(20 * var(--u));
-}
-
-.bars {
-  display: flex;
-  align-items: flex-end;
-  gap: calc(16 * var(--u));
-  height: 100%;
-}
-
-.bars span {
-  width: calc(26 * var(--u));
-  border-radius: calc(4 * var(--u)) calc(4 * var(--u)) 0 0;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 65%, rgba(155, 27, 51, 0.25) 100%);
-}
-
-.bars span:nth-child(1) { height: 52%; }
-.bars span:nth-child(2) { height: 62%; }
-.bars span:nth-child(3) { height: 72%; }
-.bars span:nth-child(4) { height: 85%; }
-.bars span:nth-child(5) { height: 100%; }
-
-.card .chart-stat {
-  margin-top: calc(30 * var(--u));
-  color: rgba(255, 255, 255, 0.85);
-  font-size: var(--fs-small);
-  font-weight: 500;
 }
 
 /* ---------- process (scroll-lit steps) ---------- */
