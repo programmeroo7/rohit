@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohit Kumar — Frontend Engineer</title>
+<meta name="description" content="Rohit Kumar, frontend engineer with 8+ years building scalable React, TypeScript and Web3 web apps for startups and agencies. Open to freelance work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+<canvas id="frame-canvas"></canvas>
+<div class="bg-scrim"></div>
+
+<main>
+
+  <section class="hero" id="home">
+    <header class="nav">
+      <div class="logo">Rohit Kumar</div>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#toolkit">Toolkit</a>
+        </nav>
+        <a class="btn btn-light" href="#contact">
+          Get in touch
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-row">
+      <div class="hero-heading">
+        <p class="hero-hey">Hey, I'm Rohit, a</p>
+        <h1>Frontend<br>Engineer</h1>
+      </div>
+      <div class="hero-tagline">
+        <h2>Eight years on the line.</h2>
+        <p>React, TypeScript and Web3 front ends for startups and agencies — dashboards built to survive real traffic, and tested like they will.</p>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><span class="num"><span class="hash">#</span>01</span><span class="label">React &amp; TypeScript</span></div>
+      <div class="stat"><span class="num"><span class="hash">#</span>02</span><span class="label">React Native</span></div>
+      <div class="stat"><span class="num"><span class="hash">#</span>03</span><span class="label">Web3 Integrations</span></div>
+      <div class="stat"><span class="num"><span class="hash">#</span>04</span><span class="label">Cypress &amp; Jest Testing</span></div>
+    </div>
+  </section>
+
+  <section class="trusted">
+    <p class="trusted-label">Teams &amp; Products I've Shipped With</p>
+    <div class="brand-list">
+      <span class="brand">ChicMic Studios</span>
+      <span class="brand">Swiggy</span>
+      <span class="brand">Instamart</span>
+      <span class="brand">Magnifi</span>
+      <span class="brand">Kargo Logic</span>
+    </div>
+  </section>
+
+  <section class="behind" id="about">
+    <div class="behind-left">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">Front Ends Built to Survive<br>Real Traffic</h2>
+      <img class="portrait" src="assets/portrait-about.webp" alt="Portrait of Rohit Kumar">
+    </div>
+    <div class="behind-right">
+      <p class="behind-text">8+ years building production React applications for software companies and startups.</p>
+      <div class="about-copy">
+        <p>At ChicMic Studios I lead frontend development across real-estate AI dashboards, geospatial map tooling on Leaflet.js, and cross-platform React Native apps.</p>
+        <p>Before that, close to two years inside Swiggy as an SDE2, building internal finance and inventory systems that operations teams relied on every day.</p>
+        <p>What comes with me: TypeScript discipline, Cypress-tested reliability, and Web3 integrations when a project actually calls for them.</p>
+      </div>
+
+      <dl class="about-stats">
+        <div><dt>8+</dt><dd>Years shipping</dd></div>
+        <div><dt>2</dt><dd>Swiggy platforms</dd></div>
+        <div><dt>1</dt><dd>Team led</dd></div>
+        <div><dt>2016</dt><dd>First commit</dd></div>
+      </dl>
+
+      <p class="about-note">Diploma, Computer Engineering — Govt. Polytechnic Hamirpur, 2014–2016 · Employee of the Month, Oct 2018</p>
+
+      <div class="behind-cta">
+        <span>Currently open to freelance —<br>React/TS builds, consulting, testing setups</span>
+        <a class="btn btn-accent" href="#contact">
+          Get in touch
+          <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="designs" id="toolkit">
+    <div class="designs-left">
+      <p class="eyebrow">Daily Drivers</p>
+      <h2 class="section-title">Toolkit</h2>
+    </div>
+    <div class="designs-right">
+      <p class="behind-text">The stack I reach for every day — core tools highlighted.</p>
+      <ul class="tags toolkit">
+        <li class="core">React</li><li class="core">TypeScript</li><li class="core">React Native</li><li class="core">JavaScript</li><li>Node.js</li><li class="core">Web3.js</li><li>AngularJS</li><li>REST APIs</li><li>CakePHP</li>
+        <li>Redux</li><li>Context API</li><li>Leaflet.js</li><li>Vue.js</li><li class="core">Cypress</li><li class="core">Jest</li>
+        <li>ESLint</li><li>SASS</li><li>Ant Design</li><li>Material UI</li><li>Git</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="section-head">
+      <p class="eyebrow">Selected Work</p>
+      <h2 class="section-title">Things I've Built</h2>
+      <p class="section-intro">Dashboards, internal tools and product front ends for teams where correctness and speed at scale mattered.</p>
+    </div>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <p class="work-client">Swiggy</p>
+        <h3>Finance Oneview</h3>
+        <p>Delivery-executive payouts and ledger dashboards — dense financial tables, reconciliation views, role-scoped access.</p>
+        <ul class="tags"><li>React</li><li>Redux</li><li>TypeScript</li><li>Ant Design</li></ul>
+      </article>
+      <article class="work-card">
+        <p class="work-client">Swiggy Instamart</p>
+        <h3>Master Inventory</h3>
+        <p>Inventory control for store managers: stock movement, catalogue mapping, bulk operations that had to stay fast at scale.</p>
+        <ul class="tags"><li>React</li><li>Redux Saga</li><li>SASS</li><li>Jest</li></ul>
+      </article>
+      <article class="work-card">
+        <p class="work-client">ChicMic Studios</p>
+        <h3>Real-estate AI Dashboard</h3>
+        <p>Frontend for an AI media platform: virtual staging pipelines, multi-tier account hierarchies, long-running job state.</p>
+        <ul class="tags"><li>React</li><li>TypeScript</li><li>Node.js</li></ul>
+      </article>
+      <article class="work-card">
+        <p class="work-client">ChicMic Studios</p>
+        <h3>Geospatial Map Tooling</h3>
+        <p>Leaflet.js map layers for property data — clustering, custom overlays, drawing tools.</p>
+        <ul class="tags"><li>Leaflet.js</li><li>React</li><li>GeoJSON</li></ul>
+      </article>
+      <article class="work-card">
+        <p class="work-client">Product</p>
+        <h3>Magnifi</h3>
+        <p>Fintech product frontend — data-heavy views where correctness mattered more than flourish.</p>
+        <ul class="tags"><li>React</li><li>Redux</li><li>Cypress</li></ul>
+      </article>
+      <article class="work-card">
+        <p class="work-client">Product</p>
+        <h3>Kargo Logic</h3>
+        <p>Logistics application: shipment tracking, status pipelines, operational dashboards.</p>
+        <ul class="tags"><li>React</li><li>Vanilla JS</li><li>Material UI</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="impact">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="mark-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f06a7e"/>
+          <stop offset="1" stop-color="#8e1530"/>
+        </linearGradient>
+        <symbol id="mark" viewBox="0 0 48 48">
+          <g fill="none" stroke="url(#mark-grad)" stroke-width="9" stroke-linecap="round" transform="rotate(-25 24 24)">
+            <path d="M12 26A12 12 0 0 1 32 14"/>
+            <path d="M36 22A12 12 0 0 1 16 34"/>
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div class="impact-head">
+      <p class="eyebrow">What I Do</p>
+      <h2 class="section-title">Built to Last.<br>Tested to Ship.</h2>
+      <p class="section-intro">React, TypeScript and Web3 front ends — engineered for real traffic and backed by tests.</p>
+    </div>
+
+    <div class="bento">
+      <div class="bento-col">
+        <article class="card">
+          <pre class="code-block" aria-hidden="true"><code><span class="c-c">// typed, tested, shipped</span>
+<span class="c-k">export function</span> <span class="c-f">PayoutTable</span>({ rows }: <span class="c-t">Props</span>) {
+  <span class="c-k">const</span> total = <span class="c-f">useLedgerTotal</span>(rows);
+  <span class="c-k">return</span> &lt;<span class="c-t">Table</span> data={rows} footer={total} /&gt;;
+}</code></pre>
+          <h3>Production React &amp; TypeScript</h3>
+          <p>Dashboards and product front ends with TypeScript discipline and component systems that scale.</p>
+        </article>
+        <article class="card card-center">
+          <svg class="card-graphic" viewBox="0 0 330 190" aria-hidden="true">
+            <g fill="none" stroke="rgba(255,255,255,0.07)">
+              <circle cx="165" cy="95" r="34"/>
+              <circle cx="165" cy="95" r="60"/>
+              <circle cx="165" cy="95" r="86"/>
+            </g>
+            <use href="#mark" x="137" y="67" width="56" height="56"/>
+          </svg>
+          <h3>Cross-Platform React Native</h3>
+          <p>One codebase, native-feeling apps on iOS and Android.</p>
+        </article>
+      </div>
+
+      <div class="bento-col">
+        <article class="card card-projects">
+          <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>
+          <h3>8+ Years Shipping</h3>
+          <p>Production front ends since 2016 for software companies, agencies and startups.</p>
+        </article>
+        <article class="card card-teams">
+          <div class="avatars">
+            <img src="assets/placeholder-avatar.svg" alt="">
+            <img src="assets/placeholder-avatar.svg" alt="">
+            <img src="assets/placeholder-avatar.svg" alt="">
+            <span class="avatar-more">+</span>
+          </div>
+          <h3>Team Lead at ChicMic Studios</h3>
+        </article>
+        <article class="card card-cta">
+          <h3>Start your next project</h3>
+          <p>Taking freelance work: React/TypeScript builds, Web3 integrations and testing setups.</p>
+          <a class="cta-btn" href="mailto:rk8679629280@gmail.com?subject=Project%20enquiry" data-calendly>Start a Project</a>
+        </article>
+      </div>
+
+      <div class="bento-col">
+        <article class="card">
+          <svg class="card-graphic" viewBox="0 0 330 190" aria-hidden="true">
+            <g fill="none" stroke="rgba(255,255,255,0.12)" stroke-dasharray="3 5">
+              <circle cx="72" cy="80" r="50"/>
+              <circle cx="225" cy="82" r="52"/>
+              <path d="M122 80H173"/>
+            </g>
+            <use href="#mark" x="44" y="52" width="56" height="56"/>
+            <g fill="#e9e9e9">
+              <circle cx="213" cy="31" r="11"/>
+              <circle cx="276" cy="86" r="11"/>
+              <circle cx="205" cy="131" r="11"/>
+            </g>
+            <g fill="#151515">
+              <circle cx="213" cy="31" r="4"/>
+              <rect x="272" y="82" width="8" height="8" rx="1.5"/>
+              <path d="M205 126l5 9h-10z"/>
+            </g>
+          </svg>
+          <h3>Web3 Integrations</h3>
+          <p>Wallets, contracts and on-chain data wired into clean, reliable UIs — when a project actually calls for it.</p>
+        </article>
+        <article class="card">
+          <div class="chart">
+            <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
+            <p class="chart-stat">Cypress + Jest<br>test coverage</p>
+          </div>
+          <h3>Tested Like It's Live</h3>
+          <p>End-to-end and unit tests so features hold up under real traffic.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="experience">
+    <div class="process-head">
+      <div>
+        <p class="eyebrow">Experience</p>
+        <h2 class="section-title">Eight Years<br>on the Line</h2>
+      </div>
+      <p class="section-intro">From full-cycle web development to leading a frontend team — here's where I've been building.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>Rexweb Solutions</h3>
+            <p class="step-role">Web Developer</p>
+            <p>Full development-cycle frontend; Employee of the Month, October 2018.</p>
+            <ul class="tags"><li>Full-Cycle Frontend</li><li>Employee of the Month</li></ul>
+          </div>
+          <p class="step-year">Oct 2016 — Feb 2019</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>Independent</h3>
+            <p class="step-role">Freelance Web Developer</p>
+            <p>Direct client work: product sites and dashboards, end to end.</p>
+            <ul class="tags"><li>Product Sites</li><li>Dashboards</li><li>End-to-End Delivery</li></ul>
+          </div>
+          <p class="step-year">Feb 2019 — Aug 2019</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>Rex Web Solutions</h3>
+            <p class="step-role">Senior Software Engineer</p>
+            <p>Full-stack delivery, migrating legacy codebases into React with TypeScript.</p>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>Full-Stack</li><li>Legacy Migration</li></ul>
+          </div>
+          <p class="step-year">Aug 2019 — Jun 2021</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>Swiggy</h3>
+            <p class="step-role">SDE2 (contract) · Remote</p>
+            <p>Internal frontend dashboards: delivery-executive payouts, ledgers, Instamart inventory tooling used daily by operations.</p>
+            <ul class="tags"><li>React</li><li>Redux</li><li>Redux Saga</li><li>TypeScript</li><li>Ant Design</li></ul>
+          </div>
+          <p class="step-year">Aug 2021 — Mar 2023</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>ChicMic</h3>
+            <p class="step-role">Software Engineer</p>
+            <p>React and React Native agency delivery — component systems, Redux/Context state, Jest and Cypress test coverage.</p>
+            <ul class="tags"><li>React</li><li>React Native</li><li>Redux</li><li>Context API</li><li>Jest</li><li>Cypress</li></ul>
+          </div>
+          <p class="step-year">Jul 2021 — Oct 2024</p>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-inner">
+          <div class="step-body">
+            <h3>ChicMic Studios</h3>
+            <p class="step-role">Senior Software Engineer · Team Lead · Mohali</p>
+            <p>Frontend lead: real-estate AI dashboards, geospatial Leaflet.js tooling, cross-platform React Native. Own architecture, review, and design-to-delivery handoff.</p>
+            <ul class="tags"><li>React</li><li>TypeScript</li><li>React Native</li><li>Leaflet.js</li><li>Team Leadership</li></ul>
+          </div>
+          <p class="step-year">Oct 2024 — Now</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Hidden until real client quotes are available: remove the "hidden" attribute and replace the placeholder quotes. -->
+  <section class="testimonials" id="testimonials" hidden>
+    <div class="section-head">
+      <p class="eyebrow">Testimonials</p>
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-intro">Words from the teams and founders I've built with.</p>
+    </div>
+
+    <div class="quote-grid">
+      <figure class="quote-card">
+        <svg class="quote-mark" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l1.6 4.4C12 6 9.6 9.6 9.4 14H16v18zm22 0V19C22 8 28 1.5 38 0l1.6 4.4C34 6 31.6 9.6 31.4 14H38v18z"/></svg>
+        <blockquote><p>Client quote goes here.</p></blockquote>
+        <figcaption>
+          <img src="assets/placeholder-avatar.svg" alt="">
+          <div><strong>Client Name</strong><span>Role, Company</span></div>
+        </figcaption>
+      </figure>
+      <figure class="quote-card">
+        <svg class="quote-mark" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l1.6 4.4C12 6 9.6 9.6 9.4 14H16v18zm22 0V19C22 8 28 1.5 38 0l1.6 4.4C34 6 31.6 9.6 31.4 14H38v18z"/></svg>
+        <blockquote><p>Client quote goes here.</p></blockquote>
+        <figcaption>
+          <img src="assets/placeholder-avatar.svg" alt="">
+          <div><strong>Client Name</strong><span>Role, Company</span></div>
+        </figcaption>
+      </figure>
+      <figure class="quote-card">
+        <svg class="quote-mark" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V19C0 8 6 1.5 16 0l1.6 4.4C12 6 9.6 9.6 9.4 14H16v18zm22 0V19C22 8 28 1.5 38 0l1.6 4.4C34 6 31.6 9.6 31.4 14H38v18z"/></svg>
+        <blockquote><p>Client quote goes here.</p></blockquote>
+        <figcaption>
+          <img src="assets/placeholder-avatar.svg" alt="">
+          <div><strong>Client Name</strong><span>Role, Company</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="faq-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="section-title">Questions?<br>I've Got Answers</h2>
+      <p class="section-intro">What working together looks like. Can't find what you're looking for? Just get in touch.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" name="faq" open>
+        <summary>What kind of work do you take on?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Web and mobile application development, React/TypeScript consulting, and software testing setups with Cypress and Jest — plus Web3 integrations when a project actually calls for them.</p></div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>Can you join an existing codebase?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Yes. Much of my work has been inside established products at Swiggy and ChicMic, and I've migrated legacy codebases into React with TypeScript.</p></div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>Do you build mobile apps?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Yes — cross-platform React Native apps, sharing logic and patterns with the web front end where it makes sense.</p></div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>How do you make sure the front end holds up?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>TypeScript from the start, Cypress end-to-end and Jest unit tests on the paths that matter, and code review on everything that ships.</p></div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>Do you work remotely?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Yes. I'm based in Chandigarh, India, and open to on-site, hybrid or remote work with teams and clients across time zones.</p></div>
+      </details>
+      <details class="faq-item" name="faq">
+        <summary>How do we get started?<span class="faq-icon" aria-hidden="true"></span></summary>
+        <div class="faq-answer"><p>Send a short brief by email, WhatsApp or LinkedIn — what you're building, your timeline and your stack — and I'll get back to you to talk it through. Or book a call directly.</p></div>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer-cta">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-title">Let's Build Something<br>Meaningful Together</h2>
+    <p class="section-intro">Taking freelance work: React/TypeScript builds, Web3 integrations, testing setups.</p>
+    <a class="btn btn-accent" href="mailto:rk8679629280@gmail.com?subject=Project%20enquiry" data-calendly>
+      Book a Call
+      <span class="btn-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <p class="cta-alt">Prefer to write? <a href="mailto:rk8679629280@gmail.com?subject=Project%20enquiry">Email</a> or <a href="https://wa.me/918219426177?text=Hi%20Rohit%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp</a></p>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Rohit Kumar</div>
+      <p>Frontend engineer building React, TypeScript and Web3 front ends. Chandigarh · On-site · Hybrid · Remote.</p>
+    </div>
+    <nav class="footer-col" aria-label="Footer navigation">
+      <p class="footer-label">Navigate</p>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#toolkit">Toolkit</a>
+    </nav>
+    <div class="footer-col">
+      <p class="footer-label">Social</p>
+      <a href="https://www.linkedin.com/in/rohit-kumar-303990117" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/programmeroo7" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://wa.me/918219426177?text=Hi%20Rohit%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-label">Contact</p>
+      <a href="mailto:rk8679629280@gmail.com">rk8679629280@gmail.com</a>
+      <a href="tel:+918219426177">+91 82194 26177</a>
+      <a href="https://www.linkedin.com/in/rohit-kumar-303990117" target="_blank" rel="noopener">in/rohit-kumar-303990117</a>
+      <span>Open to freelance</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Rohit Kumar</span>
+    <a href="#home">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="script.js?v=2"></script>
+</body>
+</html>
