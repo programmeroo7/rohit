@@ -502,8 +502,27 @@ a {
   gap: calc(21 * var(--u));
 }
 
+/* Wide feature cards: graphic left, text right, same height as the bento cards. */
 .bento-row .card {
-  min-height: calc(380 * var(--u));
+  flex-direction: row;
+  align-items: center;
+  gap: calc(28 * var(--u));
+  min-height: calc(300 * var(--u));
+}
+
+.bento-row .card-graphic {
+  flex: 0 0 52%;
+  height: auto;
+  margin-bottom: 0;
+}
+
+.bento-row .card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.bento-row .card-text h3 {
+  margin-top: 0;
 }
 
 .bento-col {
@@ -1084,6 +1103,72 @@ a {
   }
 }
 
+/* Lenis smooth scrolling (desktop) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* ---------- scroll reveals ---------- */
+
+/* Uses `translate` (not `transform`) so it doesn't fight the cards' hover lift. */
+.js-reveal :is(.hero-hey, .hero-heading h1, .hero-tagline, .stat, .eyebrow, .section-title, .section-intro,
+  .behind-text, .about-copy p, .portrait, .about-stats > div, .card, .work-card, .step, .faq-item,
+  .brand, .toolkit li, .footer-cta > *, .footer-col) {
+  opacity: 0;
+}
+
+.js-reveal .is-visible {
+  animation: reveal-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) both;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ---------- card spotlight ---------- */
+
+.card,
+.work-card {
+  position: relative;
+}
+
+.card::after,
+.work-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 72, 95, 0.13), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::after,
+.work-card:hover::after {
+  opacity: 1;
+}
+
+.card:hover {
+  border-color: rgba(232, 72, 95, 0.3);
+}
+
+.card {
+  transition: border-color 0.3s ease;
+}
+
 /* ---------- small screens ---------- */
 
 @media (max-width: 800px) {
@@ -1192,6 +1277,17 @@ a {
     margin-top: 14px;
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .bento-row .card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bento-row .card-graphic {
+    flex: 1;
+    height: auto;
+    margin-bottom: 12px;
   }
 
   .card {

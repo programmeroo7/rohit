@@ -1,3 +1,22 @@
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Smooth scrolling on desktop (Lenis, loaded from CDN). Touch devices keep native
+// scrolling, and the page works normally if the library didn't load.
+// Off for now: layered on the background video's own easing it made slow
+// scrolling feel jittery. Set to true to try it again.
+const SMOOTH_SCROLL = false;
+const lenis =
+  SMOOTH_SCROLL && window.Lenis && !REDUCED_MOTION && window.matchMedia("(pointer: fine)").matches
+    ? new window.Lenis({ lerp: 0.1 })
+    : null;
+if (lenis) {
+  const raf = (t) => {
+    lenis.raf(t);
+    requestAnimationFrame(raf);
+  };
+  requestAnimationFrame(raf);
+}
+
 // Always open at the top: don't restore the old scroll position on refresh, and
 // don't let a leftover #section in the URL jump the page to that section.
 (() => {
@@ -11,7 +30,8 @@
     if (!target || target.closest("svg")) return;
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
+      if (lenis) lenis.scrollTo(target);
+      else target.scrollIntoView({ behavior: REDUCED_MOTION ? "instant" : "smooth" });
     });
   });
 })();
@@ -25,11 +45,12 @@
   const FRAME_PATH = (i) =>
     `frames/frame-${String(i).padStart(3, "0")}.webp`;
 
+  const STEP = 1; // every frame; skipping frames made slow scrolling visibly step
+
   const canvas = document.getElementById("frame-canvas");
   const ctx = canvas.getContext("2d");
 
   const images = new Array(FRAME_COUNT);
-  let loadedCount = 0;
 
   let targetProgress = 0;   // 0..1, driven by scroll position
   let currentProgress = 0;  // 0..1, eased toward targetProgress every frame
@@ -53,10 +74,24 @@
     ctx.imageSmoothingQuality = "high";
   }
 
-  function drawFrame(index) {
-    const img = images[index];
-    if (!img || !img.complete || img.naturalWidth === 0) return;
+  const isLoaded = (img) => img && img.complete && img.naturalWidth > 0;
 
+  // Frames stream in after the page loads; until the exact one arrives, show the
+  // nearest frame that has.
+  function nearestLoaded(index) {
+    for (let d = 0; d < FRAME_COUNT; d++) {
+      if (isLoaded(images[index - d])) return images[index - d];
+      if (isLoaded(images[index + d])) return images[index + d];
+    }
+    return null;
+  }
+
+  function drawFrame(index) {
+    const img = nearestLoaded(index);
+    if (img) drawImageCover(img);
+  }
+
+  function drawImageCover(img) {
     const { vw, vh } = viewSize();
     const imgRatio = img.naturalWidth / img.naturalHeight;
     const viewRatio = vw / vh;
@@ -74,7 +109,6 @@
       offsetY = (vh - drawH) / 2;
     }
 
-    ctx.clearRect(0, 0, vw, vh);
     ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
   }
 
@@ -100,19 +134,41 @@
     requestAnimationFrame(tick);
   }
 
-  function preloadImages() {
-    for (let i = 1; i <= FRAME_COUNT; i++) {
+  function loadFrame(index) {
+    return new Promise((resolve) => {
       const img = new Image();
-      img.src = FRAME_PATH(i);
-      img.onload = () => {
-        loadedCount++;
-        if (i === 1) {
-          drawFrame(0);
-          canvas.classList.add("ready");
+      img.onload = img.onerror = () => resolve(img);
+      img.src = FRAME_PATH(index + 1);
+      images[index] = img;
+    });
+  }
+
+  // Coarse-to-fine order (every 32nd frame, then every 16th, ...) so scrubbing
+  // works across the whole page early and gets smoother as the rest arrive.
+  function loadOrder() {
+    const order = [];
+    const seen = new Set([0]);
+    for (let gap = 32; gap >= STEP; gap /= 2) {
+      for (let i = 0; i < FRAME_COUNT; i += gap) {
+        if (!seen.has(i)) {
+          seen.add(i);
+          order.push(i);
         }
-      };
-      images[i - 1] = img;
+      }
     }
+    if (!seen.has(FRAME_COUNT - 1)) order.push(FRAME_COUNT - 1);
+    return order;
+  }
+
+  async function loadRest() {
+    const queue = loadOrder();
+    const worker = async () => {
+      while (queue.length) {
+        await loadFrame(queue.shift());
+        lastDrawnFrame = -1; // redraw in case a closer frame just arrived
+      }
+    };
+    await Promise.all(Array.from({ length: 6 }, worker));
   }
 
   window.addEventListener("scroll", updateTargetProgress, { passive: true });
@@ -123,9 +179,59 @@
   });
 
   resizeCanvas();
-  preloadImages();
+  loadFrame(0).then(() => {
+    drawFrame(0);
+    canvas.classList.add("ready");
+  });
+
+  // Reduced motion: a still first frame, no scroll scrubbing.
+  if (REDUCED_MOTION) return;
+
   updateTargetProgress();
   requestAnimationFrame(tick);
+  // Start the bulk download only once the page itself has finished loading.
+  if (document.readyState === "complete") loadRest();
+  else window.addEventListener("load", loadRest, { once: true });
+})();
+
+// Scroll reveals: elements fade up as they enter the viewport, siblings staggered.
+// The hidden starting state only applies while <html> has .js-reveal (set in <head>).
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains("js-reveal")) return;
+  const els = document.querySelectorAll(
+    ".hero-hey, .hero-heading h1, .hero-tagline, .stat, .eyebrow, .section-title, .section-intro, " +
+    ".behind-text, .about-copy p, .portrait, .about-stats > div, .card, .work-card, .step, .faq-item, " +
+    ".brand, .toolkit li, .footer-cta > *, .footer-col"
+  );
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px" }
+  );
+  const revealSet = new Set(els);
+  els.forEach((el) => {
+    const siblings = [...el.parentElement.children].filter((c) => revealSet.has(c));
+    el.style.setProperty("--d", `${Math.min(siblings.indexOf(el), 8) * 70}ms`);
+    io.observe(el);
+  });
+})();
+
+// Cards: a soft accent spotlight follows the cursor.
+(() => {
+  if (!window.matchMedia("(hover: hover)").matches) return;
+  document.querySelectorAll(".card, .work-card").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
 })();
 
 (() => {
