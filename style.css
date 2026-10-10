@@ -254,7 +254,7 @@ a {
 .hero-stats {
   margin-top: calc(118 * var(--u));
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   column-gap: calc(50 * var(--u));
 }
 
@@ -493,6 +493,17 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: calc(21 * var(--u));
+}
+
+.bento-row {
+  margin-top: calc(21 * var(--u));
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(21 * var(--u));
+}
+
+.bento-row .card {
+  min-height: calc(380 * var(--u));
 }
 
 .bento-col {
@@ -1174,6 +1185,12 @@ a {
   }
 
   .bento-col {
+    gap: 14px;
+  }
+
+  .bento-row {
+    margin-top: 14px;
+    grid-template-columns: 1fr;
     gap: 14px;
   }
 
