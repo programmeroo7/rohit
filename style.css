@@ -595,11 +595,17 @@ a {
 }
 
 .card-icon {
-  width: calc(22 * var(--u));
-  height: calc(22 * var(--u));
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: max(40px, calc(52 * var(--u)));
+  height: max(40px, calc(52 * var(--u)));
+  padding: max(9px, calc(12 * var(--u)));
   margin-bottom: auto;
+  border-radius: max(10px, calc(14 * var(--u)));
+  background: rgba(232, 72, 95, 0.12);
+  border: 1px solid rgba(232, 72, 95, 0.28);
   fill: none;
-  stroke: rgba(255, 255, 255, 0.6);
+  stroke: var(--accent);
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
