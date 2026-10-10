@@ -35,10 +35,18 @@
   let currentProgress = 0;  // 0..1, eased toward targetProgress every frame
   let lastDrawnFrame = -1;
 
+  // Size to the canvas's CSS box (100vw x 100vh), not window.innerWidth/innerHeight:
+  // on mobile, innerHeight shrinks while the browser toolbars are showing but 100vh
+  // doesn't, and the mismatch stretched the frames (squeezed-looking video on iPhone).
+  function viewSize() {
+    return { vw: canvas.clientWidth, vh: canvas.clientHeight };
+  }
+
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
+    const { vw, vh } = viewSize();
+    canvas.width = Math.round(vw * dpr);
+    canvas.height = Math.round(vh * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // resizing resets context state, so re-apply the high-quality upscale each time
     ctx.imageSmoothingEnabled = true;
@@ -49,8 +57,7 @@
     const img = images[index];
     if (!img || !img.complete || img.naturalWidth === 0) return;
 
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    const { vw, vh } = viewSize();
     const imgRatio = img.naturalWidth / img.naturalHeight;
     const viewRatio = vw / vh;
 
